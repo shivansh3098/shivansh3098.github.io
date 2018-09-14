@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="abc">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form</title>
+
+<!--angular-->
+<script src="assets/js/angular.js"></script>
+
+<!-- Bootstrap -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="assets/js/bootstrap.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/module.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=audiowide" rel="stylesheet">
+
+   
+</head>
+<body>
+ 
+  
+   
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <blockquote>
+              <div class="row quote">
+                <div class="col-xs-12 text-center">
+					<h3><sup><i class="fa fa-quote-left"></i></sup> The challenge of life, I have found, is to build a resume <br> that doesn't simply tell a story about what you want to be,<br> but it's a story about who you want to be. <sup><i class="fa fa-quote-right"></i></sup></h3>
+                  <footer class="quo">Oprah Winfrey</footer>
+                </div>
+              </div>
+            </blockquote>
+      </div>
+
+      <div class="item">
+       <blockquote>
+              <div class="row quote">
+                <div class="col-xs-12 text-center">
+					<h3><sup><i class="fa fa-quote-left"></i></sup> If you call failures experiments,<br> you can put them in your resume and <br> claim them as achievements. <sup><i class="fa fa-quote-right"></i></sup></h3>
+                  <footer class="quo">Mason Cooley</footer>
+                </div>
+              </div>
+            </blockquote>
+      </div>
+    
+      <div class="item">
+       <blockquote>
+              <div class="row quote">
+                <div class="col-xs-12 text-center">
+					<h3><sup><i class="fa fa-quote-left"></i></sup> No one has a resume that they are <br> 100% comfortable with, nor does anyone have a life <br> that they are 100% comfortable with. <sup><i class="fa fa-quote-right"></i></sup></h3>
+                  <footer class="quo"> Jay Baruchel</footer>
+                </div>
+              </div>
+            </blockquote>
+      </div>
+      <div class="item">
+       <blockquote>
+              <div class="row quote">
+                <div class="col-xs-12 text-center">
+					<h3><sup><i class="fa fa-quote-left"></i></sup> I want to have a resume that is substantial enough <br> to hold itself as respectful. <sup><i class="fa fa-quote-right"></i></sup></h3>
+                  <footer class="quo"> Aldis Hodge</footer>
+                </div>
+              </div>
+            </blockquote>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+<!--
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+-->
+  </div>
+  
+
+  
+  <br>
+
+<div class="container">
+<form class="form-horizontal" ng-submit="Submit()" ng-controller="form"  name="MyForm"  novalidate>
+<div class="panel-group" id="accordion">
+<!-- basic information-->
+<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	Basic Information <a class="panel-title drop" href="#BasicInformation" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="BasicInformation" ng-hide="NoShow" class="validation"><i class="glyphicon glyphicon-asterisk"></i></span>
+	</h2>
+
+</div>
+<div id="BasicInformation" class="panel-collapse collapse in">
+<div class="panel-body">
+
+
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="Name">Name:</label><span ng-show="Cross" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span>
+	  <span ng-show="Tick" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status],{0:'error'}[Err]]" name="Name" ng-model="Name" placeholder="Full Name" ng-blur="CheckName()" ng-change="CheckName()" required>
+			
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="Email">Email:</label><span ng-show="Cross1" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span>
+	  <span ng-show="Tick1" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="email" class="form-control" ng-class="[{1:'true',0:'false'}[Status1],{0:'error'}[Err1]]" ng-blur="CheckEmail()" ng-change="CheckEmail()" name="Email" ng-model="Email" placeholder="Email Address">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="Contact">Contact:</label><span ng-show="Cross2" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span>
+	  <span ng-show="Tick2" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="number" class="form-control" ng-class="[{1:'true',0:'false'}[Status2],{0:'error'}[Err2]]" ng-blur="CheckContact()" ng-change="CheckContact()" name="Contact" ng-model="Contact" placeholder="Contact Number">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="Address">Address:</label><span ng-show="Cross3" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span>
+	  <span ng-show="Tick3" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+		<input type="text" class="form-control capital" name="Address1" ng-class="[{1:'true',0:'false'}[Status3],{0:'error'}[Err3]]" ng-change="CheckAddress1()" ng-blur="CheckAddress1()" ng-model="Address1" placeholder="Address Line 1">
+	  </div>
+	</div>
+		<div class="form-group">
+		<label class="control-label col-sm-2" for="Address"></label><span ng-show="Cross4" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick4" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+		<div class="col-sm-8">
+			<input type="text" class="form-control capital" name="Address2" ng-class="[{1:'true',0:'false'}[Status4],{0:'error'}[Err4]]" ng-change="CheckAddress2()" ng-blur="CheckAddress2()" ng-model="Address2" placeholder="Address Line 2">
+			</div>
+	</div>
+		<div class="form-group">
+		<label class="control-label col-sm-2" for="Address"></label><span ng-show="Cross5" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick5" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+		<div class="col-sm-8">
+			<input type="number" class="form-control" name="Pin" ng-model="Pin" ng-class="[{1:'true',0:'false'}[Status5],{0:'error'}[Err5]]" ng-blur="CheckPin()" ng-change="CheckPin()"  placeholder="Pin Code">
+			
+			</div>
+	</div>
+			<div class="form-group">
+		<label class="control-label col-sm-2" for="Address"></label><span ng-show="Cross6" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick6" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+		<div class="col-sm-8">
+			<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status6],{0:'error'}[Err6]]" ng-blur="CheckCity()" ng-change="CheckCity()" name="City" ng-model="City" placeholder="City">
+				</div>
+	</div>
+		<div class="form-group">
+		<label class="control-label col-sm-2" for="Address"></label><span ng-show="Cross7" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick7" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+		<div class="col-sm-8">
+			
+		<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status7],{0:'error'}[Err7]]" ng-blur="CheckState()" ng-change="CheckState()" name="State" ng-model="State" placeholder="State">
+			</div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="Expertise">Area of Expertise:</label><span ng-show="Cross37" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span>
+	  <span ng-show="Tick37" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status37],{0:'error'}[Err37]]" name="Name" ng-model="Expertise" placeholder="Expertise" ng-blur="CheckExpertise()" ng-change="CheckExpertise()">
+			
+	  </div>
+	</div>
+	<div class="form-group">
+	<label for="Intro" class="control-label col-sm-2">Brief Intro:</label><span ng-show="Cross38" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick38" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<textarea class="form-control text" name="Intro" ng-class="[{1:'true',0:'false'}[Status38],{0:'error'}[Err38]]" ng-blur="CheckIntro()" ng-change="CheckIntro()" ng-model="Intro" placeholder="Brief Intro About You And Your Goals" rows="5"></textarea>
+	</div>
+</div>
+	</div>
+	</div>
+	</div>
+	<!-- work experience-->
+	<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	Work Experience <a class="panel-title drop" href="#WorkExperience1" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="WorkExperience" ng-hide="NoShow" class="validation">*Please Fill The Information Correctly</span>
+	</h2>
+
+</div>
+<div id="WorkExperience1" class="panel-collapse collapse">
+<div class="panel-body">
+
+
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="CompanyName">Company Name:</label><span ng-show="Cross8" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick8" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="text" class="form-control  capital" ng-class="[{1:'true',0:'false'}[Status8],{0:'error'}[Err8]]" ng-blur="CheckCompany1()" ng-change="CheckCompany1()" name="CompanyName1" ng-model="CompanyName1" placeholder="Company Name">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="JobTitle">Job Title:</label><span ng-show="Cross9" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick9" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="Text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status9],{0:'error'}[Err9]]" ng-blur="CheckJobTitle1()" ng-change="CheckJobTitle1()" name="JobTitle1" ng-model="JobTitle1" placeholder="Job Title">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-xs-2" for="StartDate">Start Date:</label><span ng-show="Cross10" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick10" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-xs-4">
+		<select class="form-control" name="StartMonth1" ng-model="StartMonth1" ng-class="[{1:'true',0:'false'}[Status10],{0:'error'}[Err10]]" ng-blur="CheckStartMonth1()" ng-change="CheckStartMonth1()" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select>
+		</div>
+		<div class="col-xs-4">
+		<select class="form-control" ng-class="[{1:'true',0:'false'}[Status11],{0:'error'}[Err11]]" ng-blur="CheckStartYear1()" ng-change="CheckStartYear1()" name="StartYear1" ng-model="StartYear1" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-xs-2" for="EndDate">End Date:</label><span ng-show="Cross12" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick12" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-xs-4">
+		<select class="form-control" name="EndMonth1" ng-model="EndMonth1" ng-class="[{1:'true',0:'false'}[Status12],{0:'error'}[Err12]]" ng-blur="CheckEndMonth1()" ng-change="CheckEndMonth1()" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select>
+		</div> 
+		<div class="col-xs-4">
+		<select class="form-control" name="EndYear1" ng-class="[{1:'true',0:'false'}[Status13],{0:'error'}[Err13]]" ng-blur="CheckEndYear1()" ng-change="CheckEndYear1()" ng-model="EndYear1" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="JobDescription">Job Description:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" name="JobDescription1" ng-model="JobDescription1" placeholder="Job Description(Optional)" rows="5"></textarea>
+		</div>
+	</div>
+		<button type="button" class="btn btn-lg btn-primary work collapsed" data-toggle="collapse" data-target="#WorkExperience2"></button>
+	</div>
+<!--	</div>-->
+	<!-- second work experience-->
+	<div id="WorkExperience2" class="panel-collapse collapse">
+<div class="panel-body">
+
+
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="CompanyName">Company Name:</label><span ng-show="Cross14" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick14" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status14],{0:'error'}[Err14]]" ng-blur="CheckCompany2()" ng-change="CheckCompany2()" name="CompanyName2" ng-model="CompanyName2" placeholder="Company Name">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="JobTitle">Job Title:</label><span ng-show="Cross15" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick15" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="Text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status15],{0:'error'}[Err15]]" ng-blur="CheckJobTitle2()" ng-change="CheckJobTitle2()" name="JobTitle2" ng-model="JobTitle2" placeholder="Job Title">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-xs-2" for="StartDate">Start Date:</label><span ng-show="Cross16" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick16" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-xs-4">
+		<select class="form-control" name="StartMonth2" ng-class="[{1:'true',0:'false'}[Status16],{0:'error'}[Err16]]" ng-blur="CheckStartMonth2()" ng-change="CheckStartMonth2()" ng-model="StartMonth2" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select>
+		</div>
+		<div class="col-xs-4">
+		<select class="form-control" name="StartYear2" ng-class="[{1:'true',0:'false'}[Status17],{0:'error'}[Err17]]" ng-blur="CheckStartYear2()" ng-change="CheckStartYear2()" ng-model="StartYear2" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-xs-2" for="EndDate">End Date:</label><span ng-show="Cross18" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick18" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-xs-4">
+		<select class="form-control" name="EndMonth2" ng-class="[{1:'true',0:'false'}[Status18],{0:'error'}[Err18]]" ng-blur="CheckEndMonth2()" ng-change="CheckEndMonth2()" ng-model="EndMonth2" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select> 
+		</div> 
+		<div class="col-xs-4">
+		<select class="form-control" name="EndYear2" ng-class="[{1:'true',0:'false'}[Status19],{0:'error'}[Err19]]" ng-blur="CheckEndYear2()" ng-change="CheckEndYear2()" ng-model="EndYear2" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="JobDescription">Job Description:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" name="JobDescription2" ng-model="JobDescription2" placeholder="Job Description(Optional)" rows="5"></textarea>
+		</div>
+	</div>
+<!--	<button type="button" class="btn btn-lg btn-primary work collapsed" data-toggle="collapse" data-target="#WorkExperience3"></button>-->
+	</div>
+<!--	</div>-->
+	<!-- third work experience-->
+<!--
+	<div id="WorkExperience3" class="panel-collapse collapse">
+<div class="panel-body">
+
+
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="CompanyName">Company Name:</label><span ng-show="Cross20" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick20" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="text" class="form-control" ng-class="[{1:'true',0:'false'}[Status20],{0:'error'}[Err20]]" ng-blur="CheckCompany3()" ng-change="CheckCompany3()" name="CompanyName3" ng-model="CompanyName3" placeholder="Company Name">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="JobTitle">Job Title:</label><span ng-show="Cross21" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick21" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-8">
+			<input type="Text" class="form-control" name="JobTitle3" ng-class="[{1:'true',0:'false'}[Status21],{0:'error'}[Err21]]" ng-blur="CheckJobTitle3()" ng-change="CheckJobTitle3()" ng-model="JobTitle3" placeholder="Job Title">
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="StartDate">Start Date:</label><span ng-show="Cross22" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick22" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-4">
+		<select class="form-control" name="StartMonth3" ng-class="[{1:'true',0:'false'}[Status22],{0:'error'}[Err22]]" ng-blur="CheckStartMonth3()" ng-change="CheckStartMonth3()" ng-model="StartMonth3" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select>
+		</div>
+		<div class="col-sm-4">
+		<select class="form-control" name="StartYear3" ng-class="[{1:'true',0:'false'}[Status23],{0:'error'}[Err23]]" ng-blur="CheckStartYear3()" ng-change="CheckStartYear3()" ng-model="StartYear3" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+	  <label class="control-label col-sm-2" for="EndDate">End Date:</label><span ng-show="Cross24" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick24" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	  <div class="col-sm-4">
+		<select class="form-control" name="EndMonth3" ng-class="[{1:'true',0:'false'}[Status24],{0:'error'}[Err24]]" ng-blur="CheckEndMonth3()" ng-change="CheckEndMonth3()" ng-model="EndMonth3" ng-options="y for y in month">
+		<option value="" selected>Month</option>
+			
+		</select>
+		</div>
+		<div class="col-sm-4">
+		<select class="form-control" name="EndYear3" ng-class="[{1:'true',0:'false'}[Status25],{0:'error'}[Err25]]" ng-blur="CheckEndYear3()" ng-change="CheckEndYear3()" ng-model="EndYear3" ng-options="x for x in year">
+			<option value="">Year</option>
+		</select>
+	  </div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="JobDescription">Job Description:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" name="JobDescription3" ng-model="JobDescription3" placeholder="Job Description(Optional)" rows="5"></textarea>
+		</div>
+	</div>
+	</div>
+	</div>
+-->
+	</div>
+	</div>
+	</div>
+	<!--education-->
+	<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	Education <a class="panel-title drop" href="#Education1" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="Education" ng-hide="NoShow" class="validation">*Please Fill The Information Correctly</span>
+	</h2>
+
+</div>
+<div id="Education1" class="panel-collapse collapse">
+<div class="panel-body">
+<h3>Bachelors:</h3>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="Institute">Institute Name:</label><span ng-show="Cross26" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick26" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<input type="text" class="form-control capital" name="Institute1" ng-class="[{1:'true',0:'false'}[Status26],{0:'error'}[Err26]]" ng-blur="CheckInstitute1()" ng-change="CheckInstitute1()" ng-model="Institute1" placeholder="Institute Name">
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="Course">Course Name:</label><span ng-show="Cross27" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick27" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<input type="text" class="form-control capital" name="Course1" ng-class="[{1:'true',0:'false'}[Status27],{0:'error'}[Err27]]" ng-blur="CheckCourse1()" ng-change="CheckCourse1()" ng-model="Course1" placeholder="Course Name">
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="StartingYear">Starting Year:</label><span ng-show="Cross35" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick35" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<select class="form-control" name="StartingYear1" ng-class="[{1:'true',0:'false'}[Status35],{0:'error'}[Err35]]" ng-blur="CheckStartingYear1()" ng-change="CheckStartingYear1()" ng-model="StartingYear1" ng-options="x for x in year">
+		<option value="" selected>Year</option>
+			
+		</select>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="PassingYear">Passing Year:</label><span ng-show="Cross28" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick28" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<select class="form-control" name="PassingYear1" ng-class="[{1:'true',0:'false'}[Status28],{0:'error'}[Err28]]" ng-blur="CheckPassingYear1()" ng-change="CheckPassingYear1()" ng-model="PassingYear1" ng-options="x for x in year">
+		<option value="" selected>Year</option>
+			
+		</select>
+	</div>
+</div>
+<div class="form-group">
+		<label class="control-label col-sm-2" for="OtherInformation">Other Information:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" name="OtherInformation1" ng-model="OtherInformation1" placeholder="Other Information" rows="5"></textarea>
+		</div>
+	</div>
+<h3>Masters:</h3>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="Institute">Institute Name:</label><span ng-show="Cross29" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick29" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status29],{0:'error'}[Err29]]" ng-blur="CheckInstitute2()" ng-change="CheckInstitute2()" name="Institute2" ng-model="Institute2" placeholder="Institute Name">
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="Course">Course Name:</label><span ng-show="Cross30" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick30" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<input type="text" class="form-control capital" ng-class="[{1:'true',0:'false'}[Status30],{0:'error'}[Err30]]" ng-blur="CheckCourse2()" ng-change="CheckCourse2()" name="Course2" ng-model="Course2" placeholder="Course Name">
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="StartingYear">Starting Year:</label><span ng-show="Cross36" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick36" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<select class="form-control" name="StartingYear1" ng-class="[{1:'true',0:'false'}[Status36],{0:'error'}[Err36]]" ng-blur="CheckStartingYear2()" ng-change="CheckStartingYear2()" ng-model="StartingYear2" ng-options="x for x in year">
+		<option value="" selected>Year</option>
+			
+		</select>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-sm-2" for="PassingYear">Passing Year:</label><span ng-show="Cross31" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick31" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<select class="form-control" ng-class="[{1:'true',0:'false'}[Status31],{0:'error'}[Err31]]" ng-blur="CheckPassingYear2()" ng-change="CheckPassingYear2()" name="PassingYear2" ng-model="PassingYear2" ng-options="x for x in year">
+		<option value="" selected>Year</option>
+			
+		</select>
+	</div>
+</div>
+<div class="form-group">
+		<label class="control-label col-sm-2" for="OtherInformation">Other Information:</label>
+		<div class="col-sm-8">
+			<textarea class="form-control" name="OtherInformation2" ng-model="OtherInformation2" placeholder="Other Information" rows="5"></textarea>
+		</div>
+	</div>
+	</div>
+		</div>
+	</div>
+	<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	Qualifications: <a class="panel-title drop" href="#Qualification" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="Qualification" ng-hide="NoShow" class="validation">*Please Fill The Information Correctly</span>
+	</h2>
+
+</div>
+<div id="Qualification" class="panel-collapse collapse">
+<div class="panel-body">
+<div class="form-group">
+	<label for="Qualification" class="control-label col-sm-2">Qualifications:</label><span ng-show="Cross32" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick32" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<textarea class="form-control" name="Qualification1" ng-class="[{1:'true',0:'false'}[Status32],{0:'error'}[Err32]]" ng-blur="CheckQualification()" ng-change="CheckQualification()" ng-model="Qualification1" placeholder="Enter Special Qualifications And Skills..." rows="5"></textarea>
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+	<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	Interests: <a class="panel-title drop" href="#Interest" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="Interest" ng-hide="NoShow" class="validation">*Please Fill The Information Correctly</span>
+	</h2>
+
+</div>
+<div id="Interest" class="panel-collapse collapse">
+<div class="panel-body">
+<div class="form-group">
+	<label for="Interest" class="control-label col-sm-2">Interests:</label><span ng-show="Cross33" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick33" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<textarea class="form-control" name="Interest1" ng-class="[{1:'true',0:'false'}[Status33],{0:'error'}[Err33]]" ng-blur="CheckInterest()" ng-change="CheckInterest()" ng-model="Interest1" placeholder="Interests..." rows="5"></textarea>
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+	<div class="panel panel-primary info">
+<div class="panel-heading">
+	<h2>
+	References: <a class="panel-title drop" href="#Reference" data-toggle="collapse" data-parent="#accordion"><span class="glyphicon glyphicon-edit"></span></a><span ng-show="Reference" ng-hide="NoShow" class="validation">*Please Fill The Information Correctly</span>
+	</h2>
+
+</div>
+<div id="Reference" class="panel-collapse collapse">
+<div class="panel-body">
+<div class="form-group">
+	<label for="Reference" class="control-label col-sm-2">References:</label><span ng-show="Cross34" ng-hide="NoShow" class="glyphicon glyphicon-remove cross"></span><span ng-show="Tick34" ng-hide="NoShow" class="glyphicon glyphicon-ok tick"></span>
+	<div class="col-sm-8">
+		<textarea class="form-control" name="Reference1" ng-class="[{1:'true',0:'false'}[Status34],{0:'error'}[Err34]]" ng-blur="CheckReference()" ng-change="CheckReference()" ng-model="Reference1" placeholder="References..." rows="5"></textarea>
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+	
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-lg btn-success continue">Continue<i class="glyphicon glyphicon-chevron-right"></i></button>
+	</div>
+
+	
+	
+</form>
+</div>
+<br><br>
+<hr>
+<footer class="text-center hide-from-printer foot">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © Shivansh. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

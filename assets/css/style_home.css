@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+.style{
+	height: 100vh;
+	background-image: url(../images/bg1.jpg);
+	background-size: cover;
+	
+	
+}
+
+h1{
+	font-size: 46px;
+	font-family: 'audiowide';
+	color: white;
+	text-shadow: 4px 4px 12px #000000;
+	
+}
+h2{
+	font-size: 40px;
+	font-family: 'audiowide';
+	text-shadow: 4px 4px 12px #dcdcdc;
+}
+h3{
+	font-family: 'audiowide';
+	
+}
+a{
+	box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 6px 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.style1{
+	float: right;
+	text-align: center;
+/*	border: red solid 1px;*/
+	padding-left: 500px;
+	padding-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.style{
+		background-image: url(../images/bg2.jpg);
+	}
+	.style1{
+		padding-left: 0px;
+		padding-top: 10px;
+	}
+	h1{
+		font-size: 40px;
+	}
+	h2{
+		font-size: 36px;
+	}
+}

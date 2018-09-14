@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="qwe">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+
+<script src="assets/js/angular.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="assets/js/bootstrap.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--css-->
+       <script src="assets/js/cvmodule.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+        <style>
+			body{
+				font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+			}
+	@media print {
+		
+ 					 .hide-from-printer{  display:none; }
+		
+				}
+			.capital{
+				text-transform: capitalize;
+			}
+			div{
+				word-wrap: break-word;
+			}
+			#myCarousel {
+	min-height: 300px;
+/*	background: linear-gradient(to bottom, #434343 0%, #000000 100%);*/
+	background-color:rgba(0,0,0,0.5);
+/*	background: linear-gradient(to bottom,#0F2027 0%, #203A43 50%,#2C5364 100%);*/
+	color:white;
+
+	box-shadow: 2px 4px 16px rgba(0, 0, 0, .55);
+	
+	
+}
+.quote{
+	padding:50px 25px;
+}
+
+
+blockquote {
+	border-left: none;
+}
+			body{
+				background-color: white;
+			}
+			hr{
+	color: #c8c8c8;
+background-color: #c8c8c8;
+height: 1px;
+}
+			a{
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			}	
+			
+	</style>
+
+</head>
+<body ng-controller="cv">
+  
+  <div class="container">
+    <hr>
+    <div class="row">
+      <div class="col-xs-6">
+        <h1 class="capital">{{$storage.Details.name}}</h1>
+      </div>
+      <div class="col-xs-6">
+        <p class="text-right"><a href="#" ng-click="print()" class="btn btn-success hide-from-printer">Print my Resume <span class="glyphicon glyphicon-print" aria-hidden="true"></span></a></p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="media">
+          
+          <div class="media-body">
+            <h2 class="media-heading capital">{{$storage.Details.expertise}}</h2>
+            {{$storage.Details.intro}} </div>
+        </div>
+      </div>
+      <div class="col-xs-6 well">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : {{$storage.Details.contact}}</h4>
+          </div>
+          <div class="col-lg-6">
+            <h4 class="capital"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> : {{$storage.Details.city}}, {{$storage.Details.State}}</h4>
+          </div>
+        </div>
+        <div class="row">
+         <div class="col-lg-12">
+            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> : {{$storage.Details.email}}</h4>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-8 col-lg-7">
+        <h2>Education</h2>
+        <hr>
+        <div class="row">
+        	<div class="col-xs-6"><h3 class="capital">{{$storage.Details.institue1}}</h3></div>
+        	<div class="col-xs-6">
+        	  <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>    {{$storage.Details.startingyear1}} - {{$storage.Details.passingyear1}}</h4>
+        	</div> 
+        </div>
+        <h4><span class="label label-default">Bachelors</span></h4>
+		  <h4 class="capital">{{$storage.Details.course1}}</h4> <p>{{$storage.Details.otherinformation1}}</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <h3 class="capital">{{$storage.Details.institue2}}</h3>
+          </div>
+          <div class="col-xs-6">
+            <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{$storage.Details.startingyear2}} - {{$storage.Details.passingyear2}}</h4>
+          </div>
+        </div>
+        <h4><span class="label label-default">Masters</span></h4>
+		  <h4 class="capital">{{$storage.Details.course2}}</h4> <p>{{$storage.Details.otherinformation2}}</p>
+</div>
+      <div class="col-sm-4 col-lg-5">
+        <h2>Skill Set</h2>
+        <hr>
+        <!-- Green Progress Bar -->
+       {{$storage.Details.qualification1}}
+</div>
+    </div>
+    <hr>
+    <h2>Work Experience</h2>
+<hr>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-xs-5">
+            <h3 class="capital">{{$storage.Details.companyname1}}</h3>
+          </div>
+<div class="col-xs-6">
+            <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{$storage.Details.startmonth1}} {{$storage.Details.startyear1}} - 
+            {{$storage.Details.endmonth1}} {{$storage.Details.endyear1}}</h4>
+          </div>
+        </div>
+        <h4 class="capital"><span class="label label-default">{{$storage.Details.jobtitle1}}</span></h4>
+        <p>{{$storage.Details.jobdescription1}}</p>
+       
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-xs-5">
+            <h3 class="capital">{{$storage.Details.companyname2}}</h3>
+          </div>
+          <div class="col-xs-6">
+            <h4 class="text-right"><span ng-show="Calendar" class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{$storage.Details.startmonth2}} {{$storage.Details.startyear2}} <span ng-show="Calendar">-</span> {{$storage.Details.endmonth2}} {{$storage.Details.endyear2}}</h4>
+          </div>
+        </div>
+        <h4 class="capital"><span class="label label-default">{{$storage.Details.jobtitle2}}</span></h4>
+        <p>{{$storage.Details.jobdescription2}}</p>
+        
+      </div>
+    </div>
+    <hr>
+    <h2>Interests</h2>
+    <hr>
+    <div class="row">
+    	<div class="col-lg-12">
+    		{{$storage.Details.interest1}}
+    	</div>
+    </div>
+    <hr>
+    <div class="row">
+    	<div class="col-lg-6">
+    		<h2>Reference</h2>
+    		<hr>
+    		
+    			{{$storage.Details.reference1}}
+    		
+    	</div>
+    	<div class="col-lg-6">
+    		<h2>Address</h2>
+    		<hr>
+    		
+    			<address class="capital">
+    	{{$storage.Details.address1}},
+    	{{$storage.Details.address2}} <br>
+    	{{$storage.Details.pin}} <br>
+    	{{$storage.Details.city}} <br>
+    	{{$storage.Details.State}} <br>
+		</address>
+    		
+    	</div>
+    </div>
+    
+    <hr>
+  </div>
+<hr>
+<footer class="text-center hide-from-printer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © Shivansh. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="assets/js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="assets/js/bootstrap.js"></script>
+</body>
+</html>
